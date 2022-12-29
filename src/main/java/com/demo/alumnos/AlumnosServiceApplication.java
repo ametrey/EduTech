@@ -1,13 +1,13 @@
-package com.demo.edutech;
+package com.demo.alumnos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EdutechApplication {
+public class AlumnosServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EdutechApplication.class, args);
+		SpringApplication.run(AlumnosServiceApplication.class, args);
 	}
 
 }
