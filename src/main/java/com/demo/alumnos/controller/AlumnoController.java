@@ -36,9 +36,32 @@ public class AlumnoController {
             return ResponseEntity.ok(alumno);
         } catch (NoEntityException e) {
             System.out.println(e.getMessage());
-            //return new ResponseEntity<>("Student No encontrado", HttpStatusCode.valueOf(400));
             return ResponseEntity.badRequest().body( HttpStatus.BAD_REQUEST + "Alumno No encontrado ");
         }
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<Alumno> updateAlumno(@RequestBody Alumno alumno){
+        Alumno alumnoNew = new Alumno();
+        try {
+            alumnoNew = alumnoService.updateAlumno(alumno);
+            return ResponseEntity.ok(alumnoNew);
+        } catch (NoEntityException e) {
+            System.out.println(e.getMessage());
+            return ResponseEntity.status(400).body(alumnoNew);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteAlumno(@PathVariable("id") Long id){
+        try {
+            alumnoService.deleteAlumno(id);
+            return ResponseEntity.ok("Alumno Eliminado");
+        } catch (NoEntityException e) {
+            System.out.println(e.getMessage());
+            return ResponseEntity.badRequest().body( HttpStatus.BAD_REQUEST + "Alumno No Eliminado");
+        }
+    }
+
 
 }
