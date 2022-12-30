@@ -1,6 +1,7 @@
 package com.demo.alumnos.service;
 
 
+import com.demo.alumnos.dto.AlumnoDto;
 import com.demo.alumnos.exceptions.NoEntityException;
 import com.demo.alumnos.model.Alumno;
 import com.demo.alumnos.repository.AlumnoRepository;
@@ -28,12 +29,12 @@ public class AlumnoService {
         return alumnoRepository.findById(id).orElseThrow(() -> new NoEntityException("No existe Alumno con " + id));
     }
 
-    public Alumno updateAlumno(Alumno alumno) throws NoEntityException {
-        Alumno alumnoNew = alumnoRepository.findById(alumno.getId()).orElseThrow(
-                () -> new NoEntityException("No existe Alumno con " + alumno.getId()));
-        alumnoNew.setApellido(alumno.getApellido());
-        alumnoNew.setNombre(alumno.getNombre());
-        alumnoNew.setDni(alumno.getDni());
+    public Alumno updateAlumno(AlumnoDto alumnoDto) throws NoEntityException {
+        Alumno alumnoNew = alumnoRepository.findById(alumnoDto.getId()).orElseThrow(
+                () -> new NoEntityException("No existe Alumno con " + alumnoDto.getId()));
+        alumnoNew.setApellido(alumnoDto.getApellido());
+        alumnoNew.setNombre(alumnoDto.getNombre());
+        alumnoNew.setDni(alumnoDto.getDni());
         return alumnoRepository.save(alumnoNew);
     }
 

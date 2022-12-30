@@ -1,5 +1,6 @@
 package com.demo.alumnos.controller;
 
+import com.demo.alumnos.dto.AlumnoDto;
 import com.demo.alumnos.exceptions.NoEntityException;
 import com.demo.alumnos.model.Alumno;
 import com.demo.alumnos.service.AlumnoService;
@@ -19,8 +20,7 @@ public class AlumnoController {
 
     @PostMapping(value = "create")
     public ResponseEntity<Alumno> createAlumno(@RequestBody Alumno alumno){
-        Alumno alumnoNew = alumnoService.createAlumno(alumno);
-        return new ResponseEntity<Alumno>(alumnoNew, HttpStatus.CREATED);
+        return new ResponseEntity<>(alumnoService.createAlumno(alumno), HttpStatus.CREATED);
     }
 
     @GetMapping("/list")
@@ -41,10 +41,10 @@ public class AlumnoController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Alumno> updateAlumno(@RequestBody Alumno alumno){
+    public ResponseEntity<Alumno> updateAlumno(@RequestBody AlumnoDto alumnoDto){
         Alumno alumnoNew = new Alumno();
         try {
-            alumnoNew = alumnoService.updateAlumno(alumno);
+            alumnoNew = alumnoService.updateAlumno(alumnoDto);
             return ResponseEntity.ok(alumnoNew);
         } catch (NoEntityException e) {
             System.out.println(e.getMessage());
