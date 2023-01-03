@@ -1,0 +1,2 @@
+# EduTech
+Educational platform manager
