@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CursoDTO {
+public class CourseDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
