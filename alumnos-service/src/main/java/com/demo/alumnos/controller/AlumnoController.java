@@ -1,6 +1,7 @@
 package com.demo.alumnos.controller;
 
 import com.demo.alumnos.dto.AlumnoDto;
+import com.demo.alumnos.exceptions.DataAlreadyExistException;
 import com.demo.alumnos.exceptions.NoEntityException;
 import com.demo.alumnos.model.Alumno;
 import com.demo.alumnos.service.AlumnoService;
@@ -19,8 +20,15 @@ public class AlumnoController {
     private AlumnoService alumnoService;
 
     @PostMapping(value = "create")
-    public ResponseEntity<Alumno> createAlumno(@RequestBody Alumno alumno){
-        return new ResponseEntity<>(alumnoService.createAlumno(alumno), HttpStatus.CREATED);
+    public ResponseEntity<Alumno> createAlumno(@RequestBody Alumno alumno) throws DataAlreadyExistException {
+        try{
+            alumnoService.createAlumno(alumno);
+            return ResponseEntity.ok(alumno);
+        }catch(DataAlreadyExistException e){
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST );
+        }
+       // return new ResponseEntity<>(alumnoService.createAlumno(alumno), HttpStatus.CREATED);
     }
 
     @GetMapping("/list")

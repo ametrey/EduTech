@@ -2,6 +2,7 @@ package com.demo.alumnos.service;
 
 
 import com.demo.alumnos.dto.AlumnoDto;
+import com.demo.alumnos.exceptions.DataAlreadyExistException;
 import com.demo.alumnos.exceptions.NoEntityException;
 import com.demo.alumnos.model.Alumno;
 import com.demo.alumnos.repository.AlumnoRepository;
@@ -17,7 +18,11 @@ public class AlumnoService {
     private AlumnoRepository alumnoRepository;
 
 
-    public Alumno createAlumno(Alumno alumno) {
+    public Alumno createAlumno(Alumno alumno) throws DataAlreadyExistException {
+        if((alumnoRepository.findByDni(alumno.getDni()).isPresent())){
+            throw new DataAlreadyExistException("Wrong!, Dni already exist.");
+        }
+
         return alumnoRepository.save(alumno);
     }
 

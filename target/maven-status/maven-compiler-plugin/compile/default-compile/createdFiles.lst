@@ -1,0 +1,6 @@
+com\demo\alumnos\AlumnosServiceApplication.class
+com\demo\alumnos\model\Alumno.class
+com\demo\alumnos\controller\AlumnoController.class
+com\demo\alumnos\exceptions\NoEntityException.class
+com\demo\alumnos\repository\AlumnoRepository.class
+com\demo\alumnos\service\AlumnoService.class
