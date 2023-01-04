@@ -19,13 +19,11 @@ public class CourseController {
 
     @GetMapping()
     public ResponseEntity<?> getAllCourses() {
-
-        return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
+        return new ResponseEntity<>(courseService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getCourseById(@PathVariable Integer id){
-
         return new ResponseEntity<>(courseService.getCourseById(id), HttpStatus.OK);
     }
 
