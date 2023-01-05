@@ -17,7 +17,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(NotFound.class)
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
@@ -33,14 +33,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
         return new ResponseEntity<Object>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
-    @ResponseBody
-    public ResponseEntity<Object> handleAll(Exception ex, WebRequest request) {
-        return new ResponseEntity<Object>("An error occurred during the process",
-                HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
             HttpHeaders headers, HttpStatus status, WebRequest request) {
@@ -51,6 +43,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
             errors.put(fieldName, errorMessage);
         });
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
+    public ResponseEntity<Object> handleAll(Exception ex, WebRequest request) {
+        return new ResponseEntity<Object>("A ocurrido un error durante el proceso",
+                HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(ExecutionException.class)
@@ -68,4 +68,5 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
         return new ResponseEntity<Object>(ix.getCause(),
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 }

@@ -6,8 +6,4 @@ public class NotFound extends RuntimeException {
         super("No se encontró un curso con el id: " + id);
     }
 
-    public NotFound(String message) {
-        super();
-    }
-
 }
