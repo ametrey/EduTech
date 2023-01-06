@@ -2,12 +2,14 @@ package com.demo.edutech;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
-public class EdutechApplication {
+@EnableEurekaServer
+public class EdutechEServer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EdutechApplication.class, args);
+		SpringApplication.run(EdutechEServer.class, args);
 	}
 
 }
