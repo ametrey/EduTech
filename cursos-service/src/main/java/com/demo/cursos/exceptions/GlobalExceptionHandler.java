@@ -53,20 +53,28 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(ExecutionException.class)
-    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
-    @ResponseBody
-    public ResponseEntity<Object> handleAll(ExecutionException ex, WebRequest request) {
-        return new ResponseEntity<Object>(ex.getCause(),
-                HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    @ExceptionHandler(InterruptedException.class)
-    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
-    @ResponseBody
-    public ResponseEntity<Object> handleAll(InterruptedException ix, WebRequest request) {
-        return new ResponseEntity<Object>(ix.getCause(),
-                HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+    /*
+     * @ExceptionHandler(ExecutionException.class)
+     * 
+     * @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
+     * 
+     * @ResponseBody
+     * public ResponseEntity<Object> handleAll(ExecutionException ex, WebRequest
+     * request) {
+     * return new ResponseEntity<Object>(ex.getCause(),
+     * HttpStatus.INTERNAL_SERVER_ERROR);
+     * }
+     * 
+     * @ExceptionHandler(InterruptedException.class)
+     * 
+     * @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
+     * 
+     * @ResponseBody
+     * public ResponseEntity<Object> handleAll(InterruptedException ix, WebRequest
+     * request) {
+     * return new ResponseEntity<Object>(ix.getCause(),
+     * HttpStatus.INTERNAL_SERVER_ERROR);
+     * }
+     */
 
 }

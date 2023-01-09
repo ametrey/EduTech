@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CourseCreationDto implements Serializable {
+public class CourseCreationDTO implements Serializable {
 
     @NotBlank(message = "El nombre es obligatorio")
     private String nombre;

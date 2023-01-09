@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.cursos.dto.CourseCreationDto;
-import com.demo.cursos.dto.CourseDto;
+import com.demo.cursos.dto.CourseCreationDTO;
 import com.demo.cursos.services.CourseService;
 
 @RestController
@@ -31,17 +30,17 @@ public class CourseController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getCourseById(@PathVariable Integer id) {
-        return new ResponseEntity<>(courseService.getCourseDtoById(id), HttpStatus.OK);
+        return new ResponseEntity<>(courseService.getCourseDTOById(id), HttpStatus.OK);
     }
 
     @PostMapping()
-    public ResponseEntity<?> createCourse(@Valid @RequestBody CourseCreationDto dto) {
+    public ResponseEntity<?> createCourse(@Valid @RequestBody CourseCreationDTO dto) {
         courseService.createCourse(dto);
         return new ResponseEntity<>("Curso creado correctamente", HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCourse(@PathVariable Integer id, @RequestBody CourseDto course) {
+    public ResponseEntity<?> updateCourse(@PathVariable Integer id, @RequestBody CourseCreationDTO course) {
         courseService.updateCourse(id, course);
         return new ResponseEntity<>("Curso modificado correctamente", HttpStatus.ACCEPTED);
     }

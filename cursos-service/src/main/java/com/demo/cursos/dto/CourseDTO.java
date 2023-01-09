@@ -2,8 +2,6 @@ package com.demo.cursos.dto;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotBlank;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CourseDto implements Serializable {
+public class CourseDTO implements Serializable {
 
     private Integer cursoId;
     private String nombre;

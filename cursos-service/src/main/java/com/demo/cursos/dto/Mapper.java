@@ -7,15 +7,15 @@ import com.demo.cursos.entities.Course;
 @Component
 public class Mapper {
 
-    public CourseDto toDto(Course c) {
-        return new CourseDto(c.getCursoId(), c.getNombre(), c.getDescripcion());
+    public CourseDTO toDto(Course c) {
+        return new CourseDTO(c.getCursoId(), c.getNombre(), c.getDescripcion());
     }
 
-    public Course toCourse(CourseCreationDto cDto) {
+    public Course toCourse(CourseCreationDTO cDto) {
         return new Course(cDto.getNombre(), cDto.getDescripcion());
     }
 
-    public Course toCourse(CourseDto cDto) {
+    public Course toCourse(CourseDTO cDto) {
         return new Course(cDto.getNombre(), cDto.getDescripcion());
     }
 }
