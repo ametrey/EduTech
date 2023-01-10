@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -26,6 +27,11 @@ public class Alumno {
     @Column(name = "dni")
     private Integer dni;
 
+    @ManyToMany
+    @JoinTable(name = "coursealumno",
+            joinColumns = @JoinColumn(name = "alumnoid", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "courseid", referencedColumnName = "id"))
+    private List<Course> courses;
 
 
 }

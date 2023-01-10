@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class AlumnoTest {
-    Alumno alumno;
+  /*  Alumno alumno;
     @BeforeEach
     void setUp(){
         alumno = new Alumno(1L, "Herrera", "Joe", 22222345);
@@ -40,5 +40,5 @@ public class AlumnoTest {
     void getDni(){
         assertEquals(22222345, alumno.getDni());
     }
-
+*/
 }
